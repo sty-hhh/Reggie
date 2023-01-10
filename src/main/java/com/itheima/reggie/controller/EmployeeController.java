@@ -130,7 +130,7 @@ public class EmployeeController {
      * @return
      */
     @PutMapping
-    public R<String> update(HttpServletRequest request,@RequestBody Employee employee){
+    public R<String> update(HttpServletRequest request, @RequestBody Employee employee){
         log.info(employee.toString());
 
         Long empId = (Long)request.getSession().getAttribute("employee");
@@ -147,10 +147,10 @@ public class EmployeeController {
      * @return
      */
     @GetMapping("/{id}")
-    public R<Employee> getById(@PathVariable Long id){
+    public R<Employee> getById(@PathVariable Long id) {
         log.info("根据id查询员工信息...");
         Employee employee = employeeService.getById(id);
-        if(employee != null){
+        if (employee != null) {
             return R.success(employee);
         }
         return R.error("没有查询到对应员工信息");
